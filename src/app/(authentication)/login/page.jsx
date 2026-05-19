@@ -29,6 +29,12 @@ const LogIn = () => {
     }
   };
 
+  const socialsignIn = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
+  };
+
   return (
     <div className="h-screen flex items-center justify-center">
       <form
@@ -86,7 +92,10 @@ const LogIn = () => {
         </p>
 
         {/* Google Button */}
-        <button className="mt-4 py-2 px-4 border border-secondary text-secondary w-full flex justify-center gap-2 items-center rounded-full hover:bg-secondary hover:text-white transition">
+        <button
+          onClick={socialsignIn}
+          className="mt-4 py-2 px-4 border border-secondary text-secondary w-full flex justify-center gap-2 items-center rounded-full hover:bg-secondary hover:text-white transition"
+        >
           <FaGoogle />
           Log In With Google
         </button>

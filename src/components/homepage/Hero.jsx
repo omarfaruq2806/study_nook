@@ -19,7 +19,7 @@ const Hero = () => {
           </p>
 
           <Link href="/rooms">
-            <button className="px-6 py-3 bg-secondary text-white rounded-full flex items-center gap-2 hover:bg-primary transition">
+            <button className="px-6 py-3 bg-secondary text-white rounded-full flex items-center gap-2 hover:bg-white hover:text-secondary border border-secondary transition">
               Explore Rooms <AiOutlineArrowRight />
             </button>
           </Link>
