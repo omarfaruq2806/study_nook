@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+
 :root {
   /* Main Brand */
   --color-primary: #051B33;
