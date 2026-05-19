@@ -67,13 +67,19 @@ const Navbar = () => {
   ) : (
     <div className="flex flex-col lg:flex-row gap-3 items-center">
       <Link href="/login">
-        <button className="border text-secondary px-4 py-2 rounded-full w-24">Log In</button>
+        <button className="border text-secondary px-4 py-2 rounded-full w-24">
+          Log In
+        </button>
       </Link>
       <Link href="/register">
-        <button className="bg-secondary text-white px-4 py-2 rounded-full w-24">Register</button>
+        <button className="bg-secondary text-white px-4 py-2 rounded-full w-24">
+          Register
+        </button>
       </Link>
     </div>
   );
+
+  
 
   return (
     <div className="shadow-md shadow-secondary/10 bg-[#F8FBFF] sticky top-0 z-50">
@@ -102,6 +108,7 @@ const Navbar = () => {
         <div className="hidden lg:flex gap-4">{authButtons}</div>
 
         {/* mobile menu */}
+        {/* {isPending && <p>Loading...</p>} */}
         {openmenu && (
           <ul className="flex flex-col gap-4 absolute top-18 right-1  mx-auto text-center p-4  shadow-md lg:hidden w-50 bg-[#F8FBFF] transition">
             {renderLinks(() => setOpenMenu(false))}
