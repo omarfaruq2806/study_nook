@@ -1,14 +1,13 @@
-import { Span } from "next/dist/trace";
-import Image from "next/image";
-import React from "react";
-import { FaDollarSign } from "react-icons/fa";
-import { IoPerson } from "react-icons/io5";
-import { PiMapPinAreaFill, PiMapPinSimpleAreaFill } from "react-icons/pi";
+import Image from 'next/image';
+import React from 'react';
+import { FaDollarSign } from 'react-icons/fa';
+import { IoPerson } from 'react-icons/io5';
+import { PiMapPinSimpleAreaFill } from 'react-icons/pi';
 
-const LatestRoomCard = ({ room }) => {
-  const { name, image, description, floor, capacity, price, amenities } = room;
-  return (
-    <div className="bg-accent rounded-3xl overflow-hidden shadow-md shadow-secondary/20">
+const RoomCard = ({ room}) => {
+    const { name, image, description, floor, capacity, price, amenities } = room;
+    return (
+        <div className="bg-accent rounded-3xl overflow-hidden shadow-md shadow-secondary/20">
       <div>
         <Image
           src={image}
@@ -36,7 +35,7 @@ const LatestRoomCard = ({ room }) => {
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
-          {amenities.slice(0,3).map((amenitie, index) => (
+          {amenities.slice(0, 3).map((amenitie, index) => (
             <span
               key={index}
               className="text-xs px-2 py-1 rounded-full bg-white text-secondary"
@@ -56,7 +55,11 @@ const LatestRoomCard = ({ room }) => {
         </button>
       </div>
     </div>
-  );
+    );
 };
 
-export default LatestRoomCard;
+export default RoomCard;
+
+
+  
+    

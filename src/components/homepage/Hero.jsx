@@ -4,7 +4,7 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 
 const Hero = () => {
   return (
-    <div className="bg-accent">
+    <div className="bg-accent py-4">
       <div className="container mx-auto px-4 min-h-[80vh] flex flex-col lg:flex-row items-center gap-10">
         {/* Left - Text */}
         <div className="w-full space-y-5 flex-1">
@@ -26,13 +26,13 @@ const Hero = () => {
         </div>
 
         {/* Right - Image */}
-        <div className="w-full flex-1">
+        <div className="w-full flex-1 ">
           <Image
             src="/hero.jpg"
             alt="Study Room"
             width={600}
             height={500}
-            className="rounded-lg shadow-lg"
+            className="rounded-lg shadow-lg "
           />
         </div>
       </div>
