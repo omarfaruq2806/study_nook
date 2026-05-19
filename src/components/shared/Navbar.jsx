@@ -1,8 +1,11 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
+import { RiMenu3Line } from "react-icons/ri";
+import { GoSignOut } from "react-icons/go";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -23,159 +26,94 @@ const Navbar = () => {
     router.push("/");
   };
 
+  const baseLinks = [
+    { label: "Home", href: "/" },
+    { label: "Rooms", href: "/rooms" },
+  ];
+  const authLinks = [
+    { label: "Add A Room", href: "/addroom" },
+    { label: "My Listings", href: "/mylistings" },
+    { label: "My Bookings", href: "/mybookings" },
+  ];
+
+  const menuLinks = session ? [...baseLinks, ...authLinks] : baseLinks;
+
+  const renderLinks = (onClick) => {
+    return menuLinks.map((link) => (
+      <li key={link.href} onClick={onClick}>
+        <Link
+          href={link.href}
+          className={` text-gray-500 p-1  border-secondary hover:border-b-2 transition  hover:text-secondary ${pathname === link.href ? "border-b-2 text-secondary" : ""}`}
+        >
+          {link.label}
+        </Link>
+      </li>
+    ));
+  };
+
+  const authButtons = session ? (
+    <div className="flex gap-2 flex-col lg:flex-row items-center">
+      <p className="font-bold text-lg text-secondary">
+        Hi , {session?.user?.name}
+      </p>
+      <button
+        className="px-3 py-1 rounded-full border border-red-400 text-red-400 hover:bg-red-400 hover:text-white transition flex items-center gap-2"
+        onClick={signout}
+      >
+        <GoSignOut />
+        Sign Out
+      </button>
+    </div>
+  ) : (
+    <div className="flex flex-col lg:flex-row gap-3 items-center">
+      <Link href="/login">
+        <button className="border text-secondary px-4 py-2 rounded-full w-24">Log In</button>
+      </Link>
+      <Link href="/register">
+        <button className="bg-secondary text-white px-4 py-2 rounded-full w-24">Register</button>
+      </Link>
+    </div>
+  );
+
   return (
-    <div>
-      <nav className="flex justify-between p-4 shadow-md font-semibold">
-        <div>Study Nook</div>
+    <div className="shadow-md shadow-secondary/10 bg-[#F8FBFF] sticky top-0 z-50">
+      <nav className="flex items-center justify-between p-4 font-semibold  lg:container mx-auto">
+        <div className=" text-3xl font-bold text-secondary">
+          {/* <Image
+            src="/logo.png"
+            alt="logo"
+            width={100}
+            height={100}
+            className=" h-16 object-contain"
+          ></Image> */}
+          STUDYNOOK
+        </div>
         <button
           onClick={() => setOpenMenu(!openmenu)}
-          className="text-right md:hidden"
+          className="text-right lg:hidden text-2xl text-secondary"
         >
-          ☰
+          <RiMenu3Line />
         </button>
 
-        <ul className="hidden md:flex gap-6  ">
-          <li>
-            <Link href="/" className={pathname === "/" ? "border-b" : ""}>
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/rooms"
-              className={pathname === "/rooms" ? "border-b" : ""}
-            >
-              Rooms
-            </Link>
-          </li>
-          {session && (
-            <>
-              <li>
-                <Link
-                  href="/addroom"
-                  className={pathname === "/addroom" ? "border-b" : ""}
-                >
-                  Add A Room
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/mylistings"
-                  className={pathname === "/mylistings" ? "border-b" : ""}
-                >
-                  My Listings
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/mybookings"
-                  className={pathname === "/mybookings" ? "border-b" : ""}
-                >
-                  My Bookings
-                </Link>
-              </li>
-            </>
-          )}
-        </ul>
-        <div className="hidden md:flex gap-4">
-          {isPending ? (
-            <div>Loading...</div>
-          ) : (
-            <div>
-              {session ? (
-                <div className="flex gap-2">
-                  <p>Hi , {session?.user?.name}</p>
-                  <button onClick={signout}>Sign Out</button>
-                </div>
-              ) : (
-                <div className="flex gap-2">
-                  <Link href="/login">
-                    <button>Log In</button>
-                  </Link>
-                  <Link href="/register">
-                    <button>Sign Up</button>
-                  </Link>
-                </div>
-              )}
-            </div>
-          )}
-        </div>
+        {/* desktop menu */}
+        <ul className="hidden lg:flex gap-6  ">{renderLinks()}</ul>
+
+        {/* auth links */}
+        <div className="hidden lg:flex gap-4">{authButtons}</div>
 
         {/* mobile menu */}
         {openmenu && (
-          <ul className="flex flex-col gap-4 absolute top-16 right-3 bg-gray-100  mx-auto text-center p-4  shadow-md md:hidden">
-            <li onClick={() => setOpenMenu(false)}>
-              <Link href="/" className={pathname === "/" ? "border-b" : ""}>
-                Home
-              </Link>
-            </li>
-            <li onClick={() => setOpenMenu(false)}>
-              <Link
-                href="/rooms"
-                className={pathname === "/rooms" ? "border-b" : ""}
-              >
-                Rooms
-              </Link>
-            </li>
-            {session && (
-              <>
-                <li>
-                  <Link
-                    href="/addroom"
-                    className={pathname === "/addroom" ? "border-b" : ""}
-                  >
-                    Add A Room
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/mylistings"
-                    className={pathname === "/mylistings" ? "border-b" : ""}
-                  >
-                    My Listings
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/mybookings"
-                    className={pathname === "/mybookings" ? "border-b" : ""}
-                  >
-                    My Bookings
-                  </Link>
-                </li>
-              </>
-            )}
-            <li>
-              {isPending ? (
-                <div>Loading...</div>
-              ) : (
-                <div>
-                  {session ? (
-                    <div className="flex flex-col gap-2">
-                      <p>Hi , {session?.user?.name}</p>
-                      <button
-                        onClick={signout}
-                        className="btn rounded-full btn-error"
-                      >
-                        Sign Out
-                      </button>
-                    </div>
-                  ) : (
-                    <div className="flex flex-col gap-2">
-                      <Link href="/login">
-                        <button>Log In</button>
-                      </Link>
-                      <Link href="/register">
-                        <button>Sign Up</button>
-                      </Link>
-                    </div>
-                  )}
-                </div>
-              )}
-            </li>
+          <ul className="flex flex-col gap-4 absolute top-18 right-1  mx-auto text-center p-4  shadow-md lg:hidden w-50 bg-[#F8FBFF] transition">
+            {renderLinks(() => setOpenMenu(false))}
+            <div
+              onClick={() => {
+                setOpenMenu(false);
+              }}
+            >
+              {authButtons}
+            </div>
           </ul>
         )}
-        {/* mobile menu end */}
       </nav>
     </div>
   );

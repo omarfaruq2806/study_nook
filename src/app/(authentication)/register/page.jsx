@@ -44,51 +44,55 @@ const Register = () => {
   };
 
   return (
-    <div className=" max-w-6xl mx-auto">
+    <div className=" min-h-screen flex items-center justify-center ">
+      {/* <div></div> */}
+
       <form
         onSubmit={handleSignUp}
-        className="border p-4 rounded-2xl border-gray-200 shadow-md md:w-md  mx-auto my-10"
+        className="border p-6 rounded-2xl border-gray-200 shadow-md md:w-md  mx-auto my-10"
       >
-        <h1 className="text-2xl font-bold mb-4 text-center ">Sign Up</h1>
+        <h1 className="text-2xl font-bold mb-4 text-center text-secondary">
+          Sign Up
+        </h1>
         <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2 ">Name</label>
+          <label className="block text-primary font-semibold mb-2 ">Name</label>
           <input
             type="text"
             name="name"
             required
-            className=" shadow  border border-gray-300 rounded-full w-full py-2 px-3 text-gray-700   "
+            className=" w-full py-2 px-3 border border-secondary/30 rounded-full focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20 transition"
             placeholder="Enter your name"
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2">Email</label>
+          <label className="block text-primary font-semibold mb-2">Email</label>
           <input
             type="email"
             name="email"
             required
-            className="shadow  border border-gray-300 rounded-full w-full py-2 px-3 text-gray-700   "
+            className="w-full py-2 px-3 border border-secondary/30 rounded-full focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20 transition "
             placeholder="Enter your email"
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2">
+          <label className="block text-primary font-semibold mb-2">
             Image URL
           </label>
           <input
             type="text"
             name="photo"
             required
-            className="shadow appearance-none border border-gray-300 rounded-full w-full py-2 px-3 text-gray-700 leading-tight "
+            className="w-full py-2 px-3 border border-secondary/30 rounded-full focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20 transition"
             placeholder="Enter your image URL"
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-1">Password</label>
+          <label className="block text-primary font-semibold mb-2">Password</label>
           <input
             type="password"
             name="password"
             required
-            className="shadow appearance-none border border-gray-300 rounded-full w-full py-2 px-3 text-gray-700 leading-tight "
+            className="w-full py-2 px-3 border border-secondary/30 rounded-full focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20 transition"
             placeholder="Enter your password"
           />
         </div>
@@ -98,20 +102,20 @@ const Register = () => {
 
         <button
           type="submit"
-          className="font-bold py-2 px-4 rounded-full border border-purple-600 text-purple-500 w-full "
+          className="font-bold mt-4 py-2 px-4 rounded-full border border-secondary text-secondary w-full "
         >
           Register Now
         </button>
 
-        <p className=" mt-4 flex justify-center gap-2 border-b border-gray-200 pb-2">
+        <p className=" mt-4 flex justify-center gap-2 border-b border-secondary pb-2">
           Don't have an account ?
           <Link href={"/login"}>
-            <span className="text-purple-500">Log In</span>
+            <span className="text-secondary font-semibold hover:underline">Log In</span>
           </Link>
         </p>
         <button
           //   onClick={socialsignIn}
-          className="font-bold mt-4 py-2 px-4 rounded-full border border-purple-600 text-purple-500 w-full flex justify-center gap-2 items-center"
+          className="font-bold mt-4 py-2 px-4 rounded-full border border-secondary text-secondary w-full flex justify-center gap-2 items-center"
         >
           <FaGoogle />
           Sign Up With Google
