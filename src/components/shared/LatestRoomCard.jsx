@@ -4,6 +4,7 @@ import React from "react";
 import { FaDollarSign } from "react-icons/fa";
 import { IoPerson } from "react-icons/io5";
 import { PiMapPinAreaFill, PiMapPinSimpleAreaFill } from "react-icons/pi";
+// import hero  from "/hero.jpg"
 
 const LatestRoomCard = ({ room }) => {
   const { name, image, description, floor, capacity, price, amenities } = room;
@@ -11,7 +12,7 @@ const LatestRoomCard = ({ room }) => {
     <div className="bg-accent rounded-3xl overflow-hidden shadow-md shadow-secondary/20">
       <div>
         <Image
-          src={image}
+          src={image || "/hero.jpg"}
           alt="img"
           width={500}
           height={500}

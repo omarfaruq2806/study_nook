@@ -10,7 +10,7 @@ const LatestRoom = async () => {
       <h1 className="text-center text-4xl lg:5xl font-bold text-secondary pb-10">
         Latest Room
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-stretch">
         {latestRooms.map((room) => (
           <LatestRoomCard key={room._id} room={room}></LatestRoomCard>
         ))}

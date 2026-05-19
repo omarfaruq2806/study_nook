@@ -1,16 +1,19 @@
-import Image from 'next/image';
-import React from 'react';
-import { FaDollarSign } from 'react-icons/fa';
-import { IoPerson } from 'react-icons/io5';
-import { PiMapPinSimpleAreaFill } from 'react-icons/pi';
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+import { FaDollarSign } from "react-icons/fa";
+import { IoPerson } from "react-icons/io5";
+import { PiMapPinSimpleAreaFill } from "react-icons/pi";
 
-const RoomCard = ({ room}) => {
-    const { name, image, description, floor, capacity, price, amenities } = room;
-    return (
-        <div className="bg-accent rounded-3xl overflow-hidden shadow-md shadow-secondary/20">
+const RoomCard = ({ room }) => {
+  const { _id, name, image, description, floor, capacity, price, amenities } =
+    room;
+  console.log(image);
+  return (
+    <div className="bg-accent rounded-3xl overflow-hidden shadow-md shadow-secondary/20 h-full">
       <div>
         <Image
-          src={image}
+          src={image || "/hero.jpg"}
           alt="img"
           width={500}
           height={500}
@@ -49,17 +52,16 @@ const RoomCard = ({ room}) => {
             </span>
           )}
         </div>
-        <div></div>
-        <button className="btn w-full rounded-full bg-secondary text-white hover:bg-white hover:text-secondary border ">
-          View Details
-        </button>
+        <div className="">
+          <Link href={`/rooms/${_id}`}>
+            <button className="btn w-full rounded-full bg-secondary text-white hover:bg-white hover:text-secondary border ">
+              View Details
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
-    );
+  );
 };
 
 export default RoomCard;
-
-
-  
-    
