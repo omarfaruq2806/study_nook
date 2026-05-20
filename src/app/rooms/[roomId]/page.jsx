@@ -9,7 +9,7 @@ export async function generateMetadata({ params }) {
   // fetch data
   const room = await getDetailsRoom(roomId);
   return {
-    title: room.name,
+    title: room.name + " - " + room.description,
     description: room.description,
   };
 }

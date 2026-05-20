@@ -2,6 +2,7 @@
 import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
 import React from "react";
+import EditRoomModal from "./EditRoomModal";
 
 const DetailsRoomCard = ({ room }) => {
   const {
@@ -27,7 +28,6 @@ const DetailsRoomCard = ({ room }) => {
   const userId = session?.user?.id;
 
   const owner = creatorId == userId;
-  console.log(owner);
 
   return (
     <div>
@@ -107,9 +107,10 @@ const DetailsRoomCard = ({ room }) => {
               Book Now
             </button>
 
-            <button className="flex-1 border border-secondary text-secondary py-3 rounded-full font-semibold hover:bg-secondary hover:text-white transition">
-              Edit Room
-            </button>
+            {/* <button className="flex-1 border border-secondary text-secondary py-3 rounded-full font-semibold hover:bg-secondary hover:text-white transition">
+              <EditRoomModal></EditRoomModal>
+            </button> */}
+            <EditRoomModal room={room}></EditRoomModal>
 
             <button className="flex-1 border border-red-400 text-red-400 py-3 rounded-full font-semibold hover:bg-red-400 hover:text-white transition">
               Delete
