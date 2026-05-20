@@ -15,3 +15,9 @@ export const getDetailsRoom = async (roomId) => {
   const data = await res.json();
   return data;
 };
+
+export const getMyListings = async (userId) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/mylistings/${userId}`);
+  const data = await res.json();
+  return data;
+};

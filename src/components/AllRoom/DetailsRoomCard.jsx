@@ -3,6 +3,7 @@ import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
 import React from "react";
 import EditRoomModal from "./EditRoomModal";
+import DeleteRoomModal from "./DeleteRoomModal";
 
 const DetailsRoomCard = ({ room }) => {
   const {
@@ -112,9 +113,10 @@ const DetailsRoomCard = ({ room }) => {
             </button> */}
             <EditRoomModal room={room}></EditRoomModal>
 
-            <button className="flex-1 border border-red-400 text-red-400 py-3 rounded-full font-semibold hover:bg-red-400 hover:text-white transition">
+            {/* <button className="flex-1 border border-red-400 text-red-400 py-3 rounded-full font-semibold hover:bg-red-400 hover:text-white transition">
               Delete
-            </button>
+            </button> */}
+            <DeleteRoomModal room={room}></DeleteRoomModal>
           </div>
         ) : (
           <button className="flex-1 bg-secondary text-white py-3 rounded-full font-semibold hover:opacity-90 transition">
