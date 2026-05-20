@@ -35,6 +35,7 @@ const AddRoomForm = () => {
       price: formData.get("price"),
       amenities: formData.getAll("amenities"),
       createdAt: new Date(),
+      bookingCount : 0,
       creator: {
         id: session?.user?.id,
         name: session?.user?.name,

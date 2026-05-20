@@ -17,7 +17,6 @@ const Register = () => {
     const email = e.target.email.value;
     const photo = e.target.photo.value;
     const password = e.target.password.value;
-    // console.log({name,email, photo,password});
 
     const passwordValidation = /(?=.*[a-z])(?=.*[A-Z]).{6,}/;
     if (!passwordValidation.test(password)) {
@@ -33,7 +32,6 @@ const Register = () => {
       password: password,
       image: photo,
     });
-    console.log(data, error);
     if (data) {
       alert("Account created successfully");
       router.push("/login");
