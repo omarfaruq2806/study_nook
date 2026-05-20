@@ -2,6 +2,7 @@
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import React from "react";
+import toast from "react-hot-toast";
 import { FaGoogle } from "react-icons/fa";
 
 const amenities = [
@@ -53,7 +54,7 @@ const AddRoomForm = () => {
     const data = await res.json();
 
     if (data.insertedId) {
-      alert("Room added successfully");
+      toast.success("Room added successfully");
     //   form.reset();
     }
   };

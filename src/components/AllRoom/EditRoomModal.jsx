@@ -1,3 +1,5 @@
+import toast from "react-hot-toast";
+
 const EditRoomModal = ({ room }) => {
   const {
     name,
@@ -34,7 +36,7 @@ const EditRoomModal = ({ room }) => {
     });
     const data = await res.json();
     if(data.modifiedCount > 0){
-      alert("Room updated successfully");
+      toast.success("Room updated successfully");
       window.location.reload();
     }
   };

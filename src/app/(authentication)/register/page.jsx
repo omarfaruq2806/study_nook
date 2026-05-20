@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { FaGoogle } from "react-icons/fa";
 import { authClient } from "../../../lib/auth-client";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const router = useRouter();
@@ -33,11 +34,11 @@ const Register = () => {
       image: photo,
     });
     if (data) {
-      alert("Account created successfully");
+      toast.success("Account created successfully");
       router.push("/login");
     }
     if (error) {
-      alert(error.message);
+      toast.error(error.message);
     }
   };
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const DeleteRoomModal = ({ room }) => {
   const { _id, name } = room;
@@ -16,7 +17,7 @@ const DeleteRoomModal = ({ room }) => {
     });
     const data = await res.json();
     if (data.deletedCount > 0) {
-      alert("Room deleted successfully");
+      toast.success("Room deleted successfully");
       router.push("/");
     }
   };

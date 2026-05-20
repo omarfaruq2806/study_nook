@@ -3,6 +3,7 @@
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 import { FaGoogle } from "react-icons/fa";
 
 const LogIn = () => {
@@ -19,11 +20,11 @@ const LogIn = () => {
     });
 
     if (data) {
-      alert("Logged in successfully");
+      toast.success("Logged in successfully");
       router.push("/");
     }
     if (error) {
-      alert(error.message);
+      toast.error(error.message);
     }
   };
 
