@@ -36,7 +36,8 @@ const AddRoomForm = () => {
       price: formData.get("price"),
       amenities: formData.getAll("amenities"),
       createdAt: new Date(),
-      bookingCount : 0,
+      // bookingCount : 0,
+      total: 0,
       creator: {
         id: session?.user?.id,
         name: session?.user?.name,
@@ -55,7 +56,7 @@ const AddRoomForm = () => {
 
     if (data.insertedId) {
       toast.success("Room added successfully");
-    //   form.reset();
+      //   form.reset();
     }
   };
 

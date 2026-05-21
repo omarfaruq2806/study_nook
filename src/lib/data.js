@@ -26,7 +26,7 @@ export const getMyListings = async (userId) => {
 
 export const getMyBookings = async (userId) => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/mybookings/${userId}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/bookings/${userId}`,
   );
   const data = await res.json();
   return data;

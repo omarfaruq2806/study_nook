@@ -16,7 +16,7 @@ const DetailsRoomCard = ({ room }) => {
     price,
     amenities,
     creator,
-    bookingCount,
+    total,
   } = room;
 
   const {
@@ -62,7 +62,7 @@ const DetailsRoomCard = ({ room }) => {
 
           <div className="text-right">
             <p className="text-sm text-gray-500">Total Booked</p>
-            <h2 className="text-2xl font-bold ">{bookingCount || 0}</h2>
+            <h2 className="text-2xl font-bold ">{total || 0}</h2>
           </div>
         </div>
 

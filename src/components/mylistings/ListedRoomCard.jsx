@@ -13,7 +13,7 @@ const ListedRoomCard = ({ listing }) => {
     price,
     amenities,
     creator,
-    bookingCount,
+    total,
   } = listing;
   console.log(listing);
   return (

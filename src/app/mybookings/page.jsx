@@ -1,3 +1,4 @@
+import BookingCard from "@/components/bookings/BookingCard";
 import { auth } from "@/lib/auth";
 import { getMyBookings } from "@/lib/data";
 // import { getMyBookings } from "@/lib/data";
@@ -16,6 +17,9 @@ const page = async () => {
   return (
     <div>
       <h1>My Bookings</h1>
+      {myBookings.map((booking) => (
+        <BookingCard key={booking._id} booking={booking}></BookingCard>
+      ))}
     </div>
   );
 };
