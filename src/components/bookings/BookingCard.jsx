@@ -7,6 +7,7 @@ import {
   FaUsers,
   FaCheckCircle,
 } from "react-icons/fa";
+import CancelBookingAlert from "./CancelBookingAlert";
 const BookingCard = ({ booking }) => {
   const {
     roomImage,
@@ -139,11 +140,9 @@ const BookingCard = ({ booking }) => {
             </div>
 
             {status === "confirmed" ? (
-              <button className="px-5 py-2 rounded-full bg-red-100 text-red-600 text-sm font-medium hover:bg-red-200 transition">
-                Cancel
-              </button>
+              <CancelBookingAlert booking={booking}></CancelBookingAlert>
             ) : (
-              <p className="text-sm text-gray-500">Not Confirmed</p>
+              <p className="text-sm text-gray-500">You can cancel this booking</p>
             )}
           </div>
         </div>

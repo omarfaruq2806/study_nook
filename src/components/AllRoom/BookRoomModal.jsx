@@ -78,6 +78,9 @@ const BookRoomModal = ({ room }) => {
     if (result.insertedId) {
       toast.success("Room Booked Successfully");
       document.getElementById("my_modal_5").close();
+    } else {
+      toast.error("this room is already booked for this time slot");
+      return;
     }
   };
 
