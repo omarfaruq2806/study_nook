@@ -30,8 +30,8 @@ const Hero = () => {
           <Image
             src="/hero.jpg"
             alt="Study Room"
-            width={600}
-            height={500}
+            width={700}
+            height={700}
             className="rounded-lg shadow-lg "
           />
         </div>

@@ -8,8 +8,9 @@ import { PiMapPinSimpleAreaFill } from "react-icons/pi";
 const RoomCard = ({ room }) => {
   const { _id, name, image, description, floor, capacity, price, amenities } =
     room;
+  console.log(description);
   return (
-    <div className="bg-accent rounded-3xl overflow-hidden shadow-md shadow-secondary/20 h-full">
+    <div className="bg-accent rounded-3xl overflow-hidden shadow-md shadow-secondary/20 ">
       <div>
         <Image
           src={image || "/hero.jpg"}
@@ -21,7 +22,11 @@ const RoomCard = ({ room }) => {
       </div>
       <div className="p-3 space-y-2">
         <h1 className="text-xl text-secondary font-bold">{name}</h1>
-        <p className="text-gray-500">{description.slice(0, 100)}...</p>
+        <p className="text-gray-500">
+          {description?.length > 100
+            ? `${description.slice(0, 100)}...`
+            : description}
+        </p>
         <p className=" flex gap-2 text-md font-medium  items-center font-bol text-gray-500">
           <PiMapPinSimpleAreaFill /> Floor {floor}
         </p>
@@ -53,7 +58,7 @@ const RoomCard = ({ room }) => {
         </div>
         <div className="">
           <Link href={`/rooms/${_id}`}>
-            <button className="btn w-full rounded-full bg-secondary text-white hover:bg-white hover:text-secondary border ">
+            <button className="btn  rounded-full bg-secondary text-white hover:bg-white hover:text-secondary border flex w-full ">
               View Details
             </button>
           </Link>

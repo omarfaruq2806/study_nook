@@ -76,11 +76,8 @@ const EditRoomModal = ({ room }) => {
         Edit Room
       </button>
       <dialog id="my_modal_2" className="modal">
-        <div className="modal-box">
-          <form
-            onSubmit={handleEditRoom}
-            className="bg-accent p-6 rounded-2xl  shadow-md shadow-secondary/30 md:w-md mx-auto "
-          >
+        <div className="modal-box bg-accent  rounded-2xl  shadow-md shadow-secondary/30 md:w-md mx-auto">
+          <form onSubmit={handleEditRoom} className="p-4 ">
             <h1 className="text-3xl font-bold mb-4 text-center text-secondary">
               Edit Room
             </h1>

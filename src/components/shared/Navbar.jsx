@@ -109,7 +109,7 @@ const Navbar = () => {
         {/* mobile menu */}
         {/* {isPending && <p>Loading...</p>} */}
         {openmenu && (
-          <ul className="flex flex-col gap-4 absolute top-18 right-1  mx-auto text-center p-4  shadow-md lg:hidden w-50 bg-[#F8FBFF] transition">
+          <ul className="flex flex-col gap-4 absolute top-18 right-1  mx-auto text-center p-4 rounded-lg shadow-md lg:hidden w-50 bg-[#F8FBFF] transition">
             {renderLinks(() => setOpenMenu(false))}
             <div
               onClick={() => {

@@ -6,8 +6,8 @@ export const getAllRoom = async () => {
 
 export const getLatestRoom = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/rooms/latest`);
-    const data = await res.json();
-  return data
+  const data = await res.json();
+  return data;
 };
 
 export const getDetailsRoom = async (roomId) => {
@@ -17,7 +17,17 @@ export const getDetailsRoom = async (roomId) => {
 };
 
 export const getMyListings = async (userId) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/mylistings/${userId}`);
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/mylistings/${userId}`,
+  );
+  const data = await res.json();
+  return data;
+};
+
+export const getMyBookings = async (userId) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/mybookings/${userId}`,
+  );
   const data = await res.json();
   return data;
 };

@@ -14,7 +14,7 @@ const page = async () => {
   return (
     <div className="container mx-auto">
       <h1 className="text-center text-4xl lg:5xl font-bold text-secondary py-6">My Listings</h1>
-      <div className="px-4">
+      <div className="px-4 space-y-4">
         {myListings.map((listing) => {
           return (
             <ListedRoomCard

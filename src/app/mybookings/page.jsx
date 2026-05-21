@@ -1,11 +1,23 @@
-import React from 'react';
+import { auth } from "@/lib/auth";
+import { getMyBookings } from "@/lib/data";
+// import { getMyBookings } from "@/lib/data";
+import { headers } from "next/headers";
+import React from "react";
 
-const page = () => {
-    return (
-        <div>
-            bookings page
-        </div>
-    );
+const page = async () => {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  const userId = session?.user?.id;
+  const myBookings = await getMyBookings(userId);
+  console.log(myBookings);
+
+  return (
+    <div>
+      <h1>My Bookings</h1>
+    </div>
+  );
 };
 
 export default page;
