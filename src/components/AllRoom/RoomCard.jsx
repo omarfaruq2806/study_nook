@@ -21,7 +21,7 @@ const RoomCard = ({ room }) => {
       </div>
       <div className="p-3 space-y-2">
         <h1 className="text-xl text-secondary font-bold">{name}</h1>
-        <p className="text-gray-500">{description}</p>
+        <p className="text-gray-500">{description.slice(0, 100)}...</p>
         <p className=" flex gap-2 text-md font-medium  items-center font-bol text-gray-500">
           <PiMapPinSimpleAreaFill /> Floor {floor}
         </p>

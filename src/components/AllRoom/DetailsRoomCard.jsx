@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import EditRoomModal from "./EditRoomModal";
 import DeleteRoomModal from "./DeleteRoomModal";
+import BookRoomModal from "./BookRoomModal";
 
 const DetailsRoomCard = ({ room }) => {
   const {
@@ -103,25 +104,21 @@ const DetailsRoomCard = ({ room }) => {
 
         {/* Buttons */}
         {owner ? (
-          <div className="mt-auto flex flex-col sm:flex-row gap-4">
-            <button className="flex-1 bg-secondary text-white py-3 rounded-full font-semibold hover:opacity-90 transition">
-              Book Now
-            </button>
+          <div className="mt-auto flex flex-col md:flex-row gap-4 justify-between">
+            <div className="w-full">
+              <BookRoomModal room={room}></BookRoomModal>
+            </div>
 
-            {/* <button className="flex-1 border border-secondary text-secondary py-3 rounded-full font-semibold hover:bg-secondary hover:text-white transition">
-              <EditRoomModal></EditRoomModal>
-            </button> */}
-            <EditRoomModal room={room}></EditRoomModal>
+            <div className="w-full">
+              <EditRoomModal room={room}></EditRoomModal>
+            </div>
 
-            {/* <button className="flex-1 border border-red-400 text-red-400 py-3 rounded-full font-semibold hover:bg-red-400 hover:text-white transition">
-              Delete
-            </button> */}
-            <DeleteRoomModal room={room}></DeleteRoomModal>
+            <div  className="w-full">
+              <DeleteRoomModal room={room}></DeleteRoomModal>
+            </div>
           </div>
         ) : (
-          <button className="flex-1 bg-secondary text-white py-3 rounded-full font-semibold hover:opacity-90 transition">
-            Book Now
-          </button>
+          <BookRoomModal room={room}></BookRoomModal>
         )}
       </div>
     </div>

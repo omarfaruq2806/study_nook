@@ -1,11 +1,23 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 const DeleteRoomModal = ({ room }) => {
-  const { _id, name } = room;
+
+  const { _id, name, creator } = room;
+
   const router = useRouter();
+
+  const {
+    data: session,
+    isPending, //loading state
+    error, //error object
+    refetch, //refetch the session
+  } = authClient.useSession();
+
+  console.log(session);
   const handleDelete = async (e) => {
     e.preventDefault();
 
@@ -25,7 +37,7 @@ const DeleteRoomModal = ({ room }) => {
   return (
     <div>
       <button
-        className="flex-1 border border-red-400 text-red-400 py-3 rounded-full font-semibold hover:bg-red-400 hover:text-white transition "
+        className="px-6 w-full  border border-red-400 text-red-400 py-3 rounded-full font-semibold hover:bg-red-400 hover:text-white transition "
         onClick={() => document.getElementById("my_modal_3").showModal()}
       >
         Delete Room

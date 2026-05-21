@@ -1,6 +1,10 @@
+import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 const EditRoomModal = ({ room }) => {
+  const router = useRouter();
+
   const {
     name,
     description,
@@ -8,9 +12,25 @@ const EditRoomModal = ({ room }) => {
     floor,
     capacity,
     price,
-    amenities,
+    // amenities,
     creator,
   } = room;
+
+  const amenities = [
+    "whiteboard",
+    "Projector",
+    "WiFi",
+    "Power Outlets",
+    "Quiet Zone",
+    "Air Conditioning",
+  ];
+
+  const {
+    data: session,
+    isPending, //loading state
+    error, //error object
+    refetch, //refetch the session
+  } = authClient.useSession();
 
   const handleEditRoom = async (e) => {
     e.preventDefault();
@@ -25,26 +45,32 @@ const EditRoomModal = ({ room }) => {
       capacity: formData.get("capacity"),
       price: formData.get("price"),
       amenities: formData.getAll("amenities"),
+      creator: creator,
+      user: session?.user,
     };
+    console.log(roomData);
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/rooms/${room._id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/rooms/${room._id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(roomData),
       },
-      body: JSON.stringify(roomData),
-    });
+    );
     const data = await res.json();
-    if(data.modifiedCount > 0){
+    if (data.modifiedCount > 0) {
       toast.success("Room updated successfully");
       window.location.reload();
     }
   };
 
   return (
-    <>
+    <div>
       <button
-        className="flex-1 border border-secondary text-secondary py-3 rounded-full font-semibold hover:bg-secondary hover:text-white transition"
+        className="px-6 w-full border border-secondary text-secondary py-3 rounded-full font-semibold hover:bg-secondary hover:text-white transition"
         onClick={() => document.getElementById("my_modal_2").showModal()}
       >
         Edit Room
@@ -175,7 +201,7 @@ const EditRoomModal = ({ room }) => {
           <button>close</button>
         </form>
       </dialog>
-    </>
+    </div>
   );
 };
 
