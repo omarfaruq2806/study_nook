@@ -5,14 +5,24 @@ import { headers } from "next/headers";
 import Link from "next/link";
 import React from "react";
 
+export const metadata = {
+  title: "My Listings | Study Nook",
+  description: "Find quiet study rooms, book instantly, and boost your productivity.",
+};
+
 const page = async () => {
+
   const session = await auth.api.getSession({
     headers: await headers(),
   });
+
   const userId = session?.user?.id;
   console.log(userId);
   const myListings = await getMyListings(userId);
   const emptyListings = myListings.length === 0;
+
+  if(!session) return <div>Not Authenticated</div>;
+  
   return (
     <div className="container mx-auto">
       <h1 className="text-center text-4xl lg:5xl font-bold text-secondary py-6">My Listings</h1>

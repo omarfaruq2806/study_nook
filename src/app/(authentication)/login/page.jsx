@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { FaGoogle } from "react-icons/fa";
 
+
 const LogIn = () => {
   const router = useRouter();
 

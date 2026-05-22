@@ -18,15 +18,15 @@ const ListedRoomCard = ({ listing }) => {
   console.log(listing);
 
   return (
-    <div className="group border border-secondary/20 bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300 flex flex-col md:flex-row">
+    <div className="group border  border-secondary/20 bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300 flex flex-col md:flex-row">
       {/* Image */}
-      <div className="md:w-[40%] overflow-hidden">
+      <div className="md:w-[40%]  overflow-hidden">
         <Image
           src={image}
           alt={name}
           width={500}
           height={500}
-          className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+          className="w-full  object-contain group-hover:scale-105 transition duration-500"
         />
       </div>
 

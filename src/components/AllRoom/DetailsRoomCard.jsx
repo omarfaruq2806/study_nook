@@ -5,6 +5,7 @@ import React from "react";
 import EditRoomModal from "./EditRoomModal";
 import DeleteRoomModal from "./DeleteRoomModal";
 import BookRoomModal from "./BookRoomModal";
+import Link from "next/link";
 
 const DetailsRoomCard = ({ room }) => {
   const {
@@ -117,8 +118,18 @@ const DetailsRoomCard = ({ room }) => {
               <DeleteRoomModal room={room}></DeleteRoomModal>
             </div>
           </div>
+        ) : !session  ? (
+          <div className="w-full">
+            <Link href="/login">
+              <button className="btn  w-full bg-secondary rounded-full text-white">Login to Book</button>
+            </Link>
+          </div>
         ) : (
-          <BookRoomModal room={room}></BookRoomModal>
+          <div className="mt-auto flex flex-col md:flex-row gap-4 justify-between">
+            <div className="w-full">
+              <BookRoomModal room={room}></BookRoomModal>
+            </div>
+          </div>
         )}
       </div>
     </div>

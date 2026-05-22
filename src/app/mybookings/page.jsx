@@ -6,6 +6,11 @@ import { headers } from "next/headers";
 import Link from "next/link";
 import React from "react";
 
+export const metadata = {
+  title: "Your Bookings | Study Nook",
+  description: "Find quiet study rooms, book instantly, and boost your productivity.",
+};
+
 const page = async () => {
   const session = await auth.api.getSession({
     headers: await headers(),

@@ -8,7 +8,7 @@ import {
   FaCheckCircle,
 } from "react-icons/fa";
 import CancelBookingAlert from "./CancelBookingAlert";
-const BookingCard = ({ booking }) => {
+const BookingCard = async ({ booking }) => {
   const {
     roomImage,
     roomName,
@@ -23,6 +23,8 @@ const BookingCard = ({ booking }) => {
     total,
     status,
   } = booking;
+
+  
   return (
     <div className="mb-5 container mx-auto px-4">
       <div className="bg-white border border-secondary/10 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300 grid grid-cols-1 md:grid-cols-3">

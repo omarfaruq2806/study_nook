@@ -2,8 +2,11 @@ import RoomCard from "@/components/AllRoom/RoomCard";
 import SearchBar from "@/components/AllRoom/SearchBar";
 import { getAllRoom } from "@/lib/data";
 
-const Rooms = async () => {
-  const getRooms = await getAllRoom();
+const Rooms = async ({ searchParams }) => {
+  const sParams = await searchParams;
+  console.log(sParams);
+  const searchTerm = sParams.searchTerm || "";
+  const getRooms = await getAllRoom(searchTerm);
   return (
     <div className="container mx-auto px-4 py-10">
       <h1 className="text-center text-4xl lg:5xl font-bold text-secondary pb-10">

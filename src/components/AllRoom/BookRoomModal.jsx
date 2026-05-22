@@ -47,7 +47,12 @@ const BookRoomModal = ({ room }) => {
     e.preventDefault();
     const data = e.target;
     if (totalTime === 0) {
-      return toast.error("Please select valid time slot");
+      toast.error("Please select valid time slot");
+      return;
+    }
+    if (parseInt(endTime) - parseInt(startTime) < 1) {
+      toast.error("Minimum booking duration is 1 hour");
+      return;
     }
     const bookingData = {
       roomId: room._id,

@@ -1,11 +1,11 @@
 import React from "react";
 import Image from "next/image";
-import {
-  FaUsers,
-  FaBuilding,
-  FaClock,
-  FaCheckCircle,
-} from "react-icons/fa";
+import { FaUsers, FaBuilding, FaClock, FaCheckCircle } from "react-icons/fa";
+
+export const metadata = {
+  title: "About Us | Study Nook",
+  description: "Find quiet study rooms, book instantly, and boost your productivity.",
+};
 
 const About = () => {
   return (

@@ -12,6 +12,7 @@ const Navbar = () => {
   const router = useRouter();
 
   const [openmenu, setOpenMenu] = useState(false);
+  const [profileDropdwon , setProfileDropdown] = useState(false);
 
   const {
     data: session,
@@ -64,6 +65,17 @@ const Navbar = () => {
       </button>
     </div>
   ) : (
+    // <details class="$$dropdown">
+    //   <summary class="$$btn m-1">open or close</summary>
+    //   <ul class="$$menu $$dropdown-content bg-base-100 $$rounded-box z-1 w-52 p-2 shadow-sm">
+    //     <li>
+    //       <a>Item 1</a>
+    //     </li>
+    //     <li>
+    //       <a>Item 2</a>
+    //     </li>
+    //   </ul>
+    // </details>
     <div className="flex flex-col lg:flex-row gap-3 items-center">
       <Link href="/login">
         <button className="border text-secondary px-4 py-2 rounded-full w-24">
@@ -77,8 +89,6 @@ const Navbar = () => {
       </Link>
     </div>
   );
-
-  
 
   return (
     <div className="shadow-md shadow-secondary/10 bg-[#F8FBFF] sticky top-0 z-50">
