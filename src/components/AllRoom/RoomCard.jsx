@@ -17,7 +17,7 @@ const RoomCard = ({ room }) => {
           alt="img"
           width={500}
           height={500}
-          className=" object-fit: cover"
+          className=" object-cover"
         />
       </div>
       <div className="p-3 space-y-2">

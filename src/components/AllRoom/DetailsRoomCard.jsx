@@ -62,7 +62,7 @@ const DetailsRoomCard = ({ room }) => {
 
           <div className="text-right">
             <p className="text-sm text-gray-500">Total Booked</p>
-            <h2 className="text-2xl font-bold ">{total || 0}</h2>
+            <h2 className="text-2xl font-bold ">{total >= 0 ? total : 0}</h2>
           </div>
         </div>
 
@@ -113,7 +113,7 @@ const DetailsRoomCard = ({ room }) => {
               <EditRoomModal room={room}></EditRoomModal>
             </div>
 
-            <div  className="w-full">
+            <div className="w-full">
               <DeleteRoomModal room={room}></DeleteRoomModal>
             </div>
           </div>

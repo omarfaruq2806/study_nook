@@ -16,6 +16,7 @@ const ListedRoomCard = ({ listing }) => {
     total,
   } = listing;
   console.log(listing);
+
   return (
     <div className="group border border-secondary/20 bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300 flex flex-col md:flex-row">
       {/* Image */}

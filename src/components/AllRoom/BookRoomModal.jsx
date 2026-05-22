@@ -59,6 +59,7 @@ const BookRoomModal = ({ room }) => {
       roomDescription: room.description,
       roomAmenities: room.amenities,
       date: new Date().toISOString().split("T")[0],
+      bookingDate: data.bookingdate.value,
       startTime: parseInt(startTime),
       endTime: parseInt(endTime),
       notes: data.notes.value,
@@ -77,6 +78,7 @@ const BookRoomModal = ({ room }) => {
     const result = await res.json();
     if (result.insertedId) {
       toast.success("Room Booked Successfully");
+      window.location.reload();
       document.getElementById("my_modal_5").close();
     } else {
       toast.error("this room is already booked for this time slot");
@@ -97,10 +99,16 @@ const BookRoomModal = ({ room }) => {
           <form onSubmit={handleBooking}>
             <div className="space-y-4 flex flex-col gap-1 p-4 ">
               <label>Select Booking Date</label>
-              <input type="date" min={new Date().toISOString().split("T")[0]} />
+              <input
+                type="date"
+                name="bookingdate"
+                required
+                min={new Date().toISOString().split("T")[0]}
+              />
               <label>Select Start Time</label>
               <select
                 name="star-time"
+                required
                 onChange={(e) => setStartTime(e.target.value)}
               >
                 {timeSlots.map((time) => (

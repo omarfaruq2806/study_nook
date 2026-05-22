@@ -13,7 +13,7 @@ const BookingCard = ({ booking }) => {
     roomImage,
     roomName,
     roomPrice,
-    date,
+    bookingDate,
     roomCapacity,
     startTime,
     endTime,
@@ -23,7 +23,6 @@ const BookingCard = ({ booking }) => {
     total,
     status,
   } = booking;
-  console.log(booking, "from booking card");
   return (
     <div className="mb-5 container mx-auto px-4">
       <div className="bg-white border border-secondary/10 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300 grid grid-cols-1 md:grid-cols-3">
@@ -92,7 +91,9 @@ const BookingCard = ({ booking }) => {
                   <p>Date</p>
                 </div>
 
-                <h3 className="font-semibold text-sm text-gray-800">{date}</h3>
+                <h3 className="font-semibold text-sm text-gray-800">
+                  {bookingDate}
+                </h3>
               </div>
 
               <div className="bg-secondary/5 p-3 rounded-xl">
@@ -139,10 +140,13 @@ const BookingCard = ({ booking }) => {
               <h1 className="text-2xl font-bold text-secondary">${total}</h1>
             </div>
 
-            {status === "confirmed" ? (
-              <CancelBookingAlert booking={booking}></CancelBookingAlert>
+            {status === "confirmed" &&
+            bookingDate >= new Date().toISOString().split("T")[0] ? (
+              <CancelBookingAlert booking={booking} />
             ) : (
-              <p className="text-sm text-gray-500">You can cancel this booking</p>
+              <p className="text-xs text-gray-500">
+                You can't cancel this booking
+              </p>
             )}
           </div>
         </div>
