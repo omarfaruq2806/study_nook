@@ -23,6 +23,7 @@ const SearchBar = () => {
         <input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
+          // onChange={(e) => handleSearch(e.target.value)}
           type="text"
           className="p-2 focus-none outline-none w-full text-secondary"
           placeholder="Search for rooms (e.g. hall room, library...) "
