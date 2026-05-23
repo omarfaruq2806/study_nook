@@ -19,6 +19,7 @@ const DetailsRoomCard = ({ room }) => {
     creator,
     total,
   } = room;
+  console.log(image);
 
   const {
     data: session,

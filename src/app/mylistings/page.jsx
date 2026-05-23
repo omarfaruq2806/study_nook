@@ -16,15 +16,16 @@ const page = async () => {
     headers: await headers(),
   });
 
-   const { token } = await auth.api.getToken({ headers: await headers() });
+  const { token } = await auth.api.getToken({ headers: await headers() });
   console.log(token);
 
   const userId = session?.user?.id;
-  console.log(userId);
-  const myListings = await getMyListings(userId,token);
+
+  const myListings = await getMyListings(userId, token);
+  
   const emptyListings = myListings.length === 0;
 
-  if (!session) return <div>Not Authenticated</div>;
+  if (!session || !token) return <div>Not Authenticated</div>;
 
   return (
     <div className="container mx-auto">

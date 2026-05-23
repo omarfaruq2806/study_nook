@@ -8,12 +8,14 @@ import { PiMapPinSimpleAreaFill } from "react-icons/pi";
 const RoomCard = ({ room }) => {
   const { _id, name, image, description, floor, capacity, price, amenities } =
     room;
-  console.log(description);
+
+  
+
   return (
     <div className="bg-accent rounded-3xl overflow-hidden shadow-md shadow-secondary/20 ">
       <div>
         <Image
-          src={image || "/hero.jpg"}
+          src={image}
           alt="img"
           width={500}
           height={500}

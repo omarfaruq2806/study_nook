@@ -2,6 +2,9 @@
 export const getAllRoom = async (searchTerm = "", amenities = "") => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/rooms?search=${searchTerm}&amenities=${amenities}`,
+    {
+      cache: "no-store",
+    },
   );
   const data = await res.json();
   return data;
@@ -9,7 +12,9 @@ export const getAllRoom = async (searchTerm = "", amenities = "") => {
 
 // for home page latest rooms
 export const getLatestRoom = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/rooms/latest`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/rooms/latest`, {
+    cache: "no-store",
+  });
   const data = await res.json();
   return data;
 };
@@ -29,6 +34,7 @@ export const getMyListings = async (userId, token) => {
       headers: {
         authorization: `bearar ${token}`,
       },
+      cache: "no-store",
     },
   );
   const data = await res.json();
@@ -36,9 +42,15 @@ export const getMyListings = async (userId, token) => {
 };
 
 // for my bookings page
-export const getMyBookings = async (userId) => {
+export const getMyBookings = async (userId, token) => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/bookings/${userId}`,
+    {
+      headers: {
+        authorization: `bearar ${token}`,
+      },
+      cache: "no-store",
+    },
   );
   const data = await res.json();
   return data;

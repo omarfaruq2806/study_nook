@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 const DeleteRoomModal = ({ room }) => {
-
   const { _id, name, creator } = room;
 
   const router = useRouter();
@@ -21,10 +20,13 @@ const DeleteRoomModal = ({ room }) => {
   const handleDelete = async (e) => {
     e.preventDefault();
 
+    const { data: tokenData } = await authClient.token();
+
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/rooms/${_id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
+        authorization: `bearar ${tokenData?.token}`,
       },
     });
     const data = await res.json();

@@ -22,6 +22,10 @@ const AddRoomForm = () => {
     refetch, //refetch the session
   } = authClient.useSession();
 
+  if (isPending) return <p>Loading...</p>
+
+ 
+
   const handleAddRoom = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -45,10 +49,13 @@ const AddRoomForm = () => {
       },
     };
 
+     const {data: tokenData} = await authClient.token();
+
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/rooms`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorization: `bearar ${tokenData?.token}`,
       },
       body: JSON.stringify(roomData),
     });

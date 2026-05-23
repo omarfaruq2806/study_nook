@@ -1,5 +1,7 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
+
 const CancelBookingAlert = ({ booking }) => {
   const modalId = `cancel-modal-${booking._id}`;
   console.log("modal id", modalId);
@@ -8,12 +10,15 @@ const CancelBookingAlert = ({ booking }) => {
     console.log(booking, "from cancel booking alert");
     console.log(booking._id);
 
+    const { data: tokenData } = await authClient.token();
+
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/bookings/${booking._id}`,
       {
         method: "PATCH",
         headers: {
           "content-type": "application/json",
+          authorization: `bearar ${tokenData?.token}`,
         },
         body: JSON.stringify(booking),
       },

@@ -73,10 +73,13 @@ const BookRoomModal = ({ room }) => {
       user: user,
     };
 
+    const { data: tokenData } = await authClient.token();
+
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/bookings`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorization: `bearar ${tokenData?.token}`,
       },
       body: JSON.stringify(bookingData),
     });

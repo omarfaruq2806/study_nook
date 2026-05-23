@@ -48,7 +48,8 @@ const EditRoomModal = ({ room }) => {
       creator: creator,
       user: session?.user,
     };
-    console.log(roomData);
+
+    const { data: tokenData } = await authClient.token();
 
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/rooms/${room._id}`,
@@ -56,6 +57,7 @@ const EditRoomModal = ({ room }) => {
         method: "PATCH",
         headers: {
           "content-type": "application/json",
+          authorization: `bearar ${tokenData?.token}`,
         },
         body: JSON.stringify(roomData),
       },

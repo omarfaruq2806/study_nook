@@ -7,7 +7,9 @@ import {
   FaUsers,
   FaCheckCircle,
 } from "react-icons/fa";
+
 import CancelBookingAlert from "./CancelBookingAlert";
+
 const BookingCard = async ({ booking }) => {
   const {
     roomImage,
