@@ -103,21 +103,27 @@ const BookRoomModal = ({ room }) => {
         Book Now
       </button>
       <dialog id="my_modal_5" className="modal">
-        <div className="modal-box bg-accent">
-          <form onSubmit={handleBooking}>
+        <div className="modal-box bg-accent ">
+          <form onSubmit={handleBooking} className="">
             <div className="space-y-4 flex flex-col gap-1 p-4 ">
-              <label>Select Booking Date</label>
+              <label className="font-semibold text-lg text-secondary ">
+                Select Booking Date
+              </label>
               <input
                 type="date"
                 name="bookingdate"
                 required
                 min={new Date().toISOString().split("T")[0]}
+                className="py-2 rounded-full border border-secondary/20 bg-white px-4"
               />
-              <label>Select Start Time</label>
+              <label className="font-semibold text-lg text-secondary ">
+                Select Start Time
+              </label>
               <select
                 name="star-time"
                 required
                 onChange={(e) => setStartTime(e.target.value)}
+                className=" py-2 px-4 rounded-full border border-secondary/20 bg-white outline-none"
               >
                 {timeSlots.map((time) => (
                   <option key={time} value={time}>
@@ -125,10 +131,13 @@ const BookRoomModal = ({ room }) => {
                   </option>
                 ))}
               </select>
-              <label>Select End Time</label>
+              <label className="font-semibold text-lg text-secondary ">
+                Select End Time
+              </label>
               <select
                 name="end-time"
                 onChange={(e) => setEndTime(e.target.value)}
+                className=" py-2 px-4 rounded-full border border-secondary/20 bg-white outline-none"
               >
                 {timeSlots
                   .filter((time) => time > startTime)
@@ -140,10 +149,24 @@ const BookRoomModal = ({ room }) => {
                     );
                   })}
               </select>
-              <p>{total === 0 ? "" : `Total: ${total}$`}</p>
-              <label>Notes</label>
-              <textarea name="notes" type="text" className="border "></textarea>
-              <button type="submit">Submit</button>
+              <p className="font-semibold text-lg text-secondary ">
+                {total === 0 ? "" : `Total : ${total}$`}
+              </p>
+              <label className="font-semibold text-lg text-secondary ">
+                Notes
+              </label>
+              <textarea
+                name="notes"
+                type="text"
+                className="border p-2 rounded-3xl border-secondary/20 bg-white"
+                placeholder="optional ..."
+              ></textarea>
+              <button
+                type="submit"
+                className="btn w-full rounded-full  bg-secondary text-white "
+              >
+                Submit
+              </button>
             </div>
           </form>
         </div>
