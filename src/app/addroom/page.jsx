@@ -22,7 +22,7 @@ const AddRoomForm = () => {
     refetch, //refetch the session
   } = authClient.useSession();
 
-  if (isPending) return <p>Loading......</p>
+  if (isPending) return <p className=" text-2xl flex items-center justify-center gap-2"> <span className="loading loading-spinner loading-xl "></span> Loading......</p>
 
  
 
