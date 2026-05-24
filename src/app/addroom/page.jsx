@@ -1,6 +1,7 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 import toast from "react-hot-toast";
 import { FaGoogle } from "react-icons/fa";
@@ -15,6 +16,7 @@ const amenities = [
 ];
 
 const AddRoomForm = () => {
+  const router = useRouter();
   const {
     data: session,
     isPending, //loading state
@@ -63,6 +65,8 @@ const AddRoomForm = () => {
 
     if (data.insertedId) {
       toast.success("Room added successfully");
+      router.push("/");
+
     }
     // if(!res.ok){
     //   // toast.error("Something went wrong");

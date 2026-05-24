@@ -46,6 +46,7 @@ const Register = () => {
     const data = await authClient.signIn.social({
       provider: "google",
     });
+    toast.success("Signed in successfully");
   };
 
   return (

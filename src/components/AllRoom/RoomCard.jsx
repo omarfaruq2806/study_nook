@@ -9,17 +9,16 @@ const RoomCard = ({ room }) => {
   const { _id, name, image, description, floor, capacity, price, amenities } =
     room;
 
-  
-
   return (
     <div className="bg-accent rounded-3xl overflow-hidden shadow-md shadow-secondary/20 ">
-      <div>
+      <div className="overflow-hidden ">
         <Image
           src={image}
           alt="img"
           width={500}
-          height={500}
-          className=" object-cover"
+          height={10}
+          // fill
+          // className=" object-cover"
         />
       </div>
       <div className="p-3 space-y-2">
