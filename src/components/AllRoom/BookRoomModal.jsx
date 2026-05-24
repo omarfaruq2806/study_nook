@@ -114,7 +114,7 @@ const BookRoomModal = ({ room }) => {
                 name="bookingdate"
                 required
                 min={new Date().toISOString().split("T")[0]}
-                className="py-2 rounded-full border border-secondary/20 bg-white px-4"
+                className="py-2 rounded-full border border-secondary/20 bg-white px-4 outline-none"
               />
               <label className="font-semibold text-lg text-secondary ">
                 Select Start Time
@@ -158,7 +158,7 @@ const BookRoomModal = ({ room }) => {
               <textarea
                 name="notes"
                 type="text"
-                className="border p-2 rounded-3xl border-secondary/20 bg-white"
+                className="border p-2 rounded-3xl border-secondary/20 bg-white outline-none"
                 placeholder="optional ..."
               ></textarea>
               <button
