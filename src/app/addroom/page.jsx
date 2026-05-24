@@ -40,7 +40,6 @@ const AddRoomForm = () => {
       price: formData.get("price"),
       amenities: formData.getAll("amenities"),
       createdAt: new Date(),
-      // bookingCount : 0,
       total: 0,
       creator: {
         id: session?.user?.id,
@@ -50,13 +49,13 @@ const AddRoomForm = () => {
     };
 
      const {data: tokenData} = await authClient.token();
-    //  console.log(tokenData , 'from add room token');
+     console.log(tokenData , 'from add room token');
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/rooms`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        authorization: `bearar ${tokenData?.token}`,
+        authorization: `Bearer ${tokenData?.token}`,
       },
       body: JSON.stringify(roomData),
     });
