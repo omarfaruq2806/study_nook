@@ -20,10 +20,11 @@ const page = async () => {
 
   const userId = session?.user?.id;
   const myBookings = await getMyBookings(userId , token);
-
-  // console.log();
+  console.log(myBookings, 'from my bookings');
 
   const emptyBookings = myBookings.length === 0;
+  console.log(emptyBookings, 'from empty bookings');
+
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold text-secondary text-center p-4">

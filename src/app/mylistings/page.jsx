@@ -22,8 +22,11 @@ const page = async () => {
   const userId = session?.user?.id;
 
   const myListings = await getMyListings(userId, token);
-  
+  console.log(myListings , 'from my listings');
+
   const emptyListings = myListings.length === 0;
+  console.log(emptyListings , 'from empty listings');
+  
 
   if (!session || !token) return <div>Not Authenticated</div>;
 
