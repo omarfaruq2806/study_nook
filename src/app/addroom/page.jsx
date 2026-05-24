@@ -50,7 +50,7 @@ const AddRoomForm = () => {
     };
 
      const {data: tokenData} = await authClient.token();
-     console.log(tokenData , 'from add room token');
+    //  console.log(tokenData , 'from add room token');
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/rooms`, {
       method: "POST",
